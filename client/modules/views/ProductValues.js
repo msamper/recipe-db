@@ -44,7 +44,7 @@ function ProductValues(props) {
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
         <img
-          src="/static/themes/onepirate/productCurvyLines.png"
+          src="/productCurvyLines.png"
           className={classes.curvyLines}
           alt="curvy lines"
         />
@@ -53,7 +53,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
+                src="/productValues1.svg"
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
@@ -69,7 +69,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
+                src="/productValues2.svg"
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
@@ -85,7 +85,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
+                src="/productValues3.svg"
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>

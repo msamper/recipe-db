@@ -66,7 +66,7 @@ function AppAppBar(props) {
               variant="h6"
               underline="none"
               className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="/premium-themes/onepirate/sign-up"
+              href="/sign-up"
             >
               {'Sign Up'}
             </Link>

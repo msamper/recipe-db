@@ -27,7 +27,7 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
+          cb(null, require('./Home.js').default);
         });
       }}
     />
@@ -40,11 +40,19 @@ export default (
       }}
     />
     <Route
-      path="/apitest"
+      path="/sign-up"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           // cb(null, require('./modules/API/pages/ApiTestPage').default);
-          cb(null, require('./Home.js').default);
+          cb(null, require('./SignUp.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/apitest"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/API/pages/ApiTestPage').default);
         });
       }}
     />

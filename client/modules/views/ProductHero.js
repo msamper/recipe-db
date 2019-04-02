@@ -7,7 +7,7 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
+  'https://res.cloudinary.com/format-magazine-production/image/upload/c_limit,w_1800,h_1200,f_jpg,f_auto/dpr_2.0/c_scale,w_870,h_580/Mexican_Table_1_slzrja';
 
 const styles = theme => ({
   background: {
@@ -38,10 +38,10 @@ function ProductHero(props) {
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Welcome to a HealthyU
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        Take charge of your diet and find recipes that fit your lifestyle.
       </Typography>
       <Button
         color="secondary"
@@ -55,7 +55,7 @@ function ProductHero(props) {
         Register
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        Discover the experience
+        Get started now!
       </Typography>
     </ProductHeroLayout>
   );
