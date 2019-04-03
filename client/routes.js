@@ -56,5 +56,21 @@ export default (
         });
       }}
     />
+    <Route
+      path="/sign-in"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./SignIn.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/recipes"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./Recipes.js').default);
+        });
+      }}
+    />
   </Route>
 );

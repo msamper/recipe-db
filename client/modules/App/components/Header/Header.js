@@ -31,7 +31,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 3,
   },
   linkSecondary: {
-    color: theme.palette.secondary.main,
+    color: '#002968',
   },
 });
 
@@ -69,6 +69,14 @@ function AppAppBar(props) {
               href="/sign-up"
             >
               {'Sign Up'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/recipes"
+            >
+              {'Recipes'}
             </Link>
           </div>
         </Toolbar>

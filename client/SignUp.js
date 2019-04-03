@@ -138,7 +138,7 @@ class SignUp extends React.Component {
             )}
           </Form>
         </AppForm>
-        <AppFooter />
+        {/*<AppFooter />*/}
       </React.Fragment>
     );
   }
