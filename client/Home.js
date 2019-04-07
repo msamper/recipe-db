@@ -14,10 +14,10 @@ function Index() {
     <React.Fragment>
       <ProductHero />
       <ProductValues />
-      <ProductCategories />
+      {/*<ProductCategories />*/}
       <ProductHowItWorks />
       <ProductCTA />
-      <ProductSmokingHero />
+      {/*<ProductSmokingHero />*/}
       {/*<AppFooter />*/}
     </React.Fragment>
   );

@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '../components/Typography';
 import TextField from '../components/TextField';
+import TextBox from '../components/TextBox';
 import Snackbar from '../components/Snackbar';
 import LayoutBody from '../components/LayoutBody';
 import Button from '../components/Button';
@@ -12,7 +13,7 @@ import Button from '../components/Button';
 const styles = theme => ({
   root: {
     marginTop: theme.spacing.unit * 10,
-    marginBottom: 0,
+    marginBottom: 80,
     display: 'flex',
   },
   cardWrapper: {
@@ -21,7 +22,7 @@ const styles = theme => ({
   card: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: theme.palette.warning.main,
+    backgroundColor: '#002968',
     padding: `${theme.spacing.unit * 8}px ${theme.spacing.unit * 3}px`,
   },
   cardContent: {
@@ -29,8 +30,13 @@ const styles = theme => ({
   },
   textField: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 1,
+  },
+  textBox: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 3,
   },
   button: {
     width: '100%',
@@ -45,7 +51,7 @@ const styles = theme => ({
     right: 0,
     bottom: 0,
     width: '100%',
-    background: 'url(/static/onepirate/productCTAImageDots.png)',
+    background: 'url(/productCTAImageDots.png)',
   },
   image: {
     position: 'absolute',
@@ -82,43 +88,30 @@ class ProductCTA extends React.Component {
     return (
       <LayoutBody className={classes.root} component="section" width="large">
         <Grid container spacing={0}>
-          <Grid item xs={12} md={6} className={classes.cardWrapper}>
+          <Grid item xs={12} md={12} className={classes.cardWrapper}>
             <div className={classes.card}>
               <form onSubmit={this.handleSubmit} className={classes.cardContent}>
-                <Typography variant="h2" component="h2" gutterBottom>
-                  Receive offers
+                <Typography variant="h2" component="h2" gutterBottom color="secondary">
+                  Contact us
                 </Typography>
-                <Typography variant="h5">
-                  Taste the holidays of the everyday close to home.
+                <Typography variant="h5" color="secondary">
+                  Send us an email to give us your suggestions, offer new recipes, or just say hello!
                 </Typography>
-                <TextField noBorder className={classes.textField} placeholder="Your email" />
+                <TextField noBorder className={classes.textField} placeholder="Name" />
+                <TextField noBorder className={classes.textField} placeholder="Email" />
+                <TextBox noBorder className={classes.textBox} placeholder="Message" />
                 <Button
                   type="submit"
-                  color="primary"
+                  color="secondary"
                   variant="contained"
                   className={classes.button}
                 >
-                  Keep me updated
+                  Send email
                 </Button>
               </form>
             </div>
           </Grid>
-          <Grid item xs={12} md={6} className={classes.imagesWrapper}>
-            <Hidden smDown>
-              <div className={classes.imageDots} />
-              <img
-                src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
-                alt="call to action"
-                className={classes.image}
-              />
-            </Hidden>
-          </Grid>
         </Grid>
-        <Snackbar
-          open={this.state.open}
-          onClose={this.handleClose}
-          message="We will send you our best offers, once a week."
-        />
       </LayoutBody>
     );
   }

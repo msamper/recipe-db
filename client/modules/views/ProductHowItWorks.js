@@ -10,7 +10,7 @@ import Typography from '../components/Typography';
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: '#cffcda',
     overflow: 'hidden',
   },
   layoutBody: {
@@ -58,11 +58,11 @@ function ProductHowItWorks(props) {
   return (
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
-        <img
+        {/*<img
           src="/productCurvyLines.png"
           className={classes.curvyLines}
           alt="curvy lines"
-        />
+        />*/}
         <Typography variant="h4" marked="center" className={classes.title} component="h2">
           How it works
         </Typography>
@@ -77,7 +77,7 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  {'Sign up for a personalized profile.'}
                 </Typography>
               </div>
             </Grid>
@@ -90,7 +90,8 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so be quick.
+                  {'Input your diet preferences, goals, and personal '}
+                  {'health information.'}
                 </Typography>
               </div>
             </Grid>
@@ -103,8 +104,7 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                  {'Experience cultures through recipes catered to your needs.'}
                 </Typography>
               </div>
             </Grid>

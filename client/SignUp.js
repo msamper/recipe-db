@@ -15,6 +15,11 @@ import { email, required } from './modules/form/validation';
 import RFTextField from './modules/form/RFTextField';
 import FormButton from './modules/form/FormButton';
 import FormFeedback from './modules/form/FormFeedback';
+import Button from '@material-ui/core/Button';
+
+<Button component={Link} to="/open-collective">
+  Link
+</Button>
 
 const styles = theme => ({
   form: {
@@ -148,6 +153,9 @@ class SignUp extends React.Component {
                   type="password"
                   margin="normal"
                 />
+                <Button variant="outlined" href="/sign-up-next" className={classes.button} color="secondary" fullWidth>
+                  Next
+                </Button>
                 <Field
                   fullWidth
                   component={RFTextField}
@@ -182,7 +190,6 @@ class SignUp extends React.Component {
             )}
           </Form>
         </AppForm>
-        <AppFooter />
       </React.Fragment>
     );
   }

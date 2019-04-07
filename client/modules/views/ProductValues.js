@@ -57,11 +57,10 @@ function ProductValues(props) {
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Healthy recipes
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Reimagine your health with unique, creative recipes.'}
               </Typography>
             </div>
           </Grid>
@@ -73,11 +72,11 @@ function ProductValues(props) {
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                New cultures
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'Experience the cultures of new countries through delicious food '}
+                {'designed just for you.'}
               </Typography>
             </div>
           </Grid>
@@ -89,11 +88,11 @@ function ProductValues(props) {
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Goal-oriented friends
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'By using HealthyU, you will meet people all around the world who '}
+                {'will motivate you and keep you on track with your goals.'}
               </Typography>
             </div>
           </Grid>

@@ -54,7 +54,6 @@ class SignIn extends React.Component {
 
     return (
       <React.Fragment>
-        <AppAppBar />
         <AppForm>
           <React.Fragment>
             <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -62,7 +61,7 @@ class SignIn extends React.Component {
             </Typography>
             <Typography variant="body2" align="center">
               {'Not a member yet? '}
-              <Link href="/premium-themes/onepirate/sign-up" align="center" underline="always">
+              <Link href="/signuptest" align="center" underline="always">
                 Sign Up here
               </Link>
             </Typography>
@@ -125,7 +124,6 @@ class SignIn extends React.Component {
             </Link>
           </Typography>
         </AppForm>
-        <AppFooter />
       </React.Fragment>
     );
   }

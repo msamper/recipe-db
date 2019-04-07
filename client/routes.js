@@ -56,5 +56,45 @@ export default (
         });
       }}
     />
+    <Route
+      path="/sign-in"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./SignIn.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/recipes"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./Recipes.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/sign-up-next"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./SignUpNext.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/profile"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./Profile.js').default);
+        });
+      }}
+    />
+    <Route
+      path="/signuptest"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./SignUpTest.js').default);
+        });
+      }}
+    />
   </Route>
 );

@@ -31,7 +31,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 3,
   },
   linkSecondary: {
-    color: theme.palette.secondary.main,
+    color: '#002968',
   },
 });
 
@@ -69,6 +69,38 @@ function AppAppBar(props) {
               href="/sign-up"
             >
               {'Sign Up'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.rightLink)}
+              href="/recipes"
+            >
+              {'Recipes'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.rightLink)}
+              href="/profile"
+            >
+              {'Profile'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/logout"
+            >
+              {'Log Out'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/signuptest"
+            >
+              {'Test'}
             </Link>
           </div>
         </Toolbar>
