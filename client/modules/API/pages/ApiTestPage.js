@@ -1,19 +1,54 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-class FetchDemo extends Component {
-  state = {
-    recipes: [],
-  };
+const styles = theme => ({
+  card: {
+    maxWidth: 300,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+});
 
-  componentDidMount() {
+class RecipeReviewCard extends React.Component {
+  state = { expanded: false };
+
+  onClick() {
     axios.get('https://api.edamam.com/search', {
       params: {
         app_id: '6e473dd6',
         app_key: '1e381d8a43e8a17308fe94b5e3e6d8cd',
         q: 'chicken',
         from: '0',
-        to: '3',
+        to: '10',
       },
     })
       .then(res => {
@@ -21,34 +56,80 @@ class FetchDemo extends Component {
         this.setState({ recipes });
       });
   }
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
   render() {
-    const list = this.state.recipes.map((recipe, index) => {
-      return (
-        <tr key={index}>
-          <td>{recipe.label}</td>
-          <td>{recipe.calories}</td>
-          <td><img src={recipe.image} /></td>
-        </tr>
-      );
-    });
+    const { classes } = this.props;
     return (
-      <div>
-        <h1>{'Here is some fud for u'}</h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Recipe</th>
-              <th>Calories</th>
-              <th>Image</th>
-            </tr>
-          </thead>
-          <tbody>
-          {list}
-          </tbody>
-        </table>
-      </div>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="https://assets3.thrillist.com/v1/image/1559020/size/tmg-article_main_wide_2x.jpg"
+          title="Paella dish"
+        />
+        <CardHeader
+          className={classes.title}
+          title="Sushi"
+        />
+        <CardContent>
+          <Typography component="p">
+            This impressive paella is a perfect party dish and a fun meal to cook together with your
+            guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.actions} disableActionSpacing>
+          <IconButton aria-label="Add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="Share">
+            <ShareIcon />
+          </IconButton>
+          <IconButton
+            className={classnames(classes.expand, {
+              [classes.expandOpen]: this.state.expanded,
+            })}
+            onClick={this.handleExpandClick}
+            aria-expanded={this.state.expanded}
+            aria-label="Show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>
+              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
+              minutes.
+            </Typography>
+            <Typography paragraph>
+              Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
+              heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
+              browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
+              chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
+              salt and pepper, and cook, stirring often until thickened and fragrant, about 10
+              minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+            </Typography>
+            <Typography paragraph>
+              Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
+              without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat
+              to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and
+              cook again without stirring, until mussels have opened and rice is just tender, 5 to 7
+              minutes more. (Discard any mussels that don’t open.)
+            </Typography>
+            <Typography>
+              Set aside off of the heat to let rest for 10 minutes, and then serve.
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
     );
   }
 }
 
-export default FetchDemo;
+RecipeReviewCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(RecipeReviewCard);
