@@ -73,10 +73,34 @@ function AppAppBar(props) {
             <Link
               variant="h6"
               underline="none"
-              className={classNames(classes.rightLink, classes.linkSecondary)}
+              className={classNames(classes.rightLink, classes.rightLink)}
               href="/recipes"
             >
               {'Recipes'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.rightLink)}
+              href="/profile"
+            >
+              {'Profile'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/logout"
+            >
+              {'Log Out'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/signuptest"
+            >
+              {'Test'}
             </Link>
           </div>
         </Toolbar>

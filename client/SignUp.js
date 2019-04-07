@@ -15,6 +15,11 @@ import { email, required } from './modules/form/validation';
 import RFTextField from './modules/form/RFTextField';
 import FormButton from './modules/form/FormButton';
 import FormFeedback from './modules/form/FormFeedback';
+import Button from '@material-ui/core/Button';
+
+<Button component={Link} to="/open-collective">
+  Link
+</Button>
 
 const styles = theme => ({
   form: {
@@ -117,28 +122,13 @@ class SignUp extends React.Component {
                   type="password"
                   margin="normal"
                 />
-                <FormSpy subscription={{ submitError: true }}>
-                  {({ submitError }) =>
-                    submitError ? (
-                      <FormFeedback className={classes.feedback} error>
-                        {submitError}
-                      </FormFeedback>
-                    ) : null
-                  }
-                </FormSpy>
-                <FormButton
-                  className={classes.button}
-                  disabled={submitting || sent}
-                  color="secondary"
-                  fullWidth
-                >
-                  {submitting || sent ? 'In progress…' : 'Sign Up'}
-                </FormButton>
+                <Button variant="outlined" href="/sign-up-next" className={classes.button} color="secondary" fullWidth>
+                  Next
+                </Button>
               </form>
             )}
           </Form>
         </AppForm>
-        {/*<AppFooter />*/}
       </React.Fragment>
     );
   }
