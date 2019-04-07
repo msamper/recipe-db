@@ -87,9 +87,6 @@ export class FormUserDetails extends Component {
               </Typography>
               <br />
             </React.Fragment>
-            <Form
-              validate={this.validate}
-            >
             <Grid container spacing={16}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -157,7 +154,6 @@ export class FormUserDetails extends Component {
               onClick={this.continue}>
               Continue
             </Button>
-            </Form>
           </AppForm>
       </React.Fragment>
     );
