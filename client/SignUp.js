@@ -39,8 +39,19 @@ class SignUp extends React.Component {
     sent: false,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
+      errors: {},
+    };
+  }
+
   validate = values => {
-    const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
+    const errors = required(['firstName', 'lastName', 'email', 'password', 'password2'], values, this.props);
 
     if (!errors.email) {
       const emailError = email(values.email, values, this.props);
@@ -52,7 +63,19 @@ class SignUp extends React.Component {
     return errors;
   };
 
-  handleSubmit = () => {};
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  // TODO
+  handleSubmit = () => {
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2,
+    };
+    console.log(newUser);
+  };
 
   render() {
     const { classes } = this.props;
@@ -66,7 +89,7 @@ class SignUp extends React.Component {
               Sign Up
             </Typography>
             <Typography variant="body2" align="center">
-              <Link href="/premium-themes/onepirate/sign-in" underline="always">
+              <Link href="/sign-in" underline="always">
                 Already have an account?
               </Link>
             </Typography>
@@ -83,6 +106,8 @@ class SignUp extends React.Component {
                     <Field
                       autoFocus
                       component={RFTextField}
+                      onChange={this.onChange}
+                      value={this.state.firstName}
                       autoComplete="fname"
                       fullWidth
                       label="First name"
@@ -93,6 +118,8 @@ class SignUp extends React.Component {
                   <Grid item xs={12} sm={6}>
                     <Field
                       component={RFTextField}
+                      onChange={this.onChange}
+                      value={this.state.lastName}
                       autoComplete="lname"
                       fullWidth
                       label="Last name"
@@ -105,6 +132,8 @@ class SignUp extends React.Component {
                   autoComplete="email"
                   component={RFTextField}
                   disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.email}
                   fullWidth
                   label="Email"
                   margin="normal"
@@ -115,6 +144,8 @@ class SignUp extends React.Component {
                   fullWidth
                   component={RFTextField}
                   disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.password}
                   required
                   name="password"
                   autoComplete="current-password"
@@ -125,6 +156,36 @@ class SignUp extends React.Component {
                 <Button variant="outlined" href="/sign-up-next" className={classes.button} color="secondary" fullWidth>
                   Next
                 </Button>
+                <Field
+                  fullWidth
+                  component={RFTextField}
+                  disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.password2}
+                  required
+                  name="password2"
+                  autoComplete="current-password"
+                  label="Confirm Password"
+                  type="password"
+                  margin="normal"
+                />
+                <FormSpy subscription={{ submitError: true }}>
+                  {({ submitError }) =>
+                    submitError ? (
+                      <FormFeedback className={classes.feedback} error>
+                        {submitError}
+                      </FormFeedback>
+                    ) : null
+                  }
+                </FormSpy>
+                <FormButton
+                  className={classes.button}
+                  disabled={submitting || sent}
+                  color="secondary"
+                  fullWidth
+                >
+                  {submitting || sent ? 'In progress…' : 'Sign Up'}
+                </FormButton>
               </form>
             )}
           </Form>
