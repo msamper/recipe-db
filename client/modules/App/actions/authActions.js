@@ -50,6 +50,7 @@ export const loginUser = userData => dispatch => {
       // Decode token to get user data
       const decoded = jwt_decode(token);
       console.log(decoded);
+      localStorage.setItem('userId', decoded.id);
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
