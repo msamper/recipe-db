@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link';
 import LayoutBody from '../../components/LayoutBody';
 import Button from '../../components/Button';
 import Typography from '../../components/Typography';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 const styles = theme => ({
   root: {
@@ -38,6 +39,7 @@ const styles = theme => ({
   },
   image: {
     height: 55,
+    width: 55,
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 4,
   },
@@ -71,11 +73,9 @@ function ProductHowItWorks(props) {
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
-                <img
-                  src="/productHowItWorks1.svg"
-                  alt="suitcase"
-                  className={classes.image}
-                />
+                <SvgIcon {...props} className={classes.image}>
+                  <path d="M12 12.25c1.24 0 2.25-1.01 2.25-2.25S13.24 7.75 12 7.75 9.75 8.76 9.75 10s1.01 2.25 2.25 2.25zm4.5 4c0-1.5-3-2.25-4.5-2.25s-4.5.75-4.5 2.25V17h9v-.75zM19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                </SvgIcon>
                 <Typography variant="h5" align="center">
                   {'Sign up for a personalized profile.'}
                 </Typography>
@@ -84,11 +84,9 @@ function ProductHowItWorks(props) {
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
-                <img
-                  src="/productHowItWorks2.svg"
-                  alt="graph"
-                  className={classes.image}
-                />
+                <SvgIcon {...props} className={classes.image}>
+                  <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z" />
+                </SvgIcon>
                 <Typography variant="h5" align="center">
                   {'Input your diet preferences, goals, and personal '}
                   {'health information.'}
@@ -98,11 +96,9 @@ function ProductHowItWorks(props) {
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
-                <img
-                  src="/productHowItWorks3.svg"
-                  alt="clock"
-                  className={classes.image}
-                />
+                <SvgIcon {...props} className={classes.image}>
+                  <path d="M19 5v14H5V5h14m1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9zM11 7h6v2h-6V7zm0 4h6v2h-6v-2zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z" />
+                </SvgIcon>
                 <Typography variant="h5" align="center">
                   {'Experience cultures through recipes catered to your needs.'}
                 </Typography>
@@ -116,7 +112,7 @@ function ProductHowItWorks(props) {
           variant="contained"
           className={classes.button}
           component={linkProps => (
-            <Link {...linkProps} href="/premium-themes/onepirate/sign-up" variant="button" />
+            <Link {...linkProps} href="/sign-up" variant="button" />
           )}
         >
           Get started

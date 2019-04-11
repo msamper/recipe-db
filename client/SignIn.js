@@ -92,8 +92,8 @@ class SignIn extends React.Component {
             </Typography>
             <Typography variant="body2" align="center">
               {'Not a member yet? '}
-              <Link href="/signuptest" align="center" underline="always">
-                Sign Up here
+              <Link href="/sign-up" align="center" underline="always">
+                Sign Up Here
               </Link>
             </Typography>
           </React.Fragment>
