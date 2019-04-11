@@ -2,6 +2,7 @@ import Express from 'express';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import passport from 'passport';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
@@ -45,9 +46,10 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
+// import posts from './routes/post.routes';
+import users from './routes/users';
 import dummyData from './dummyData';
-import serverConfig from './config';
+import serverConfig from './config/keys';
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -65,12 +67,18 @@ if (process.env.NODE_ENV !== 'test') {
   });
 }
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require('./config/passport')(passport);
+
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
-app.use('/api', posts);
+// app.use('/api', posts);
+app.use('/api/users', users);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -92,7 +100,7 @@ const renderFullPage = (html, initialState) => {
 
         ${isProdMode ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <link rel="https://res.cloudinary.com/dbfdxnvvb/image/upload/v1554418461/fork-and-knife-png-3677.png" type="image/png" />
       </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>

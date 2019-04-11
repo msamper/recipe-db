@@ -12,13 +12,14 @@ import Footer from './components/Footer/Footer';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
-import { switchLanguage } from '../../modules/Intl/IntlActions';
 
-let DevTools;
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line global-require
-  DevTools = require('./components/DevTools').default;
-}
+import { logoutUser } from './actions/authActions';
+
+// let DevTools;
+// if (process.env.NODE_ENV === 'development') {
+//   // eslint-disable-next-line global-require
+//   DevTools = require('./components/DevTools').default;
+// }
 
 export class App extends Component {
   constructor(props) {
@@ -37,11 +38,10 @@ export class App extends Component {
   render() {
     return (
       <div>
-        {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
         <div>
           <Helmet
             title="HealthyU"
-            titleTemplate="%s - Blog App"
+            titleTemplate="%s - A Personal Recipe DB"
             meta={[
               { charset: 'utf-8' },
               {
@@ -55,9 +55,8 @@ export class App extends Component {
             ]}
           />
           <Header
-            switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
-            intl={this.props.intl}
-            toggleAddPost={this.toggleAddPostSection}
+            auth={this.props.auth}
+            logoutUser={this.props.logoutUser}
           />
           <div className={styles.container}>
             {this.props.children}
@@ -71,15 +70,19 @@ export class App extends Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    auth: store.auth,
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  { logoutUser },
+  )(App);

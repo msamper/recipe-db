@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import LayoutBody from '../components/LayoutBody';
+import LayoutBody from '../../components/LayoutBody';
 
 const styles = theme => ({
   root: {
@@ -56,7 +56,7 @@ function ProductHeroLayout(props) {
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="full">
         <img
-          src="/static/themes/onepirate/productHeroWonder.png"
+          src="/productHeroWonder.png"
           alt="wonder"
           width="147"
           height="80"
@@ -66,7 +66,7 @@ function ProductHeroLayout(props) {
         <div className={classNames(classes.background, backgroundClassName)} />
         <img
           className={classes.arrowDown}
-          src="/static/themes/onepirate/productHeroArrowDown.png"
+          src="/productHeroArrowDown.png"
           height="16"
           width="12"
           alt="arrow down"

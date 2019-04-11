@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import LayoutBody from '../components/LayoutBody';
-import Typography from '../components/Typography';
+import LayoutBody from '../../components/LayoutBody';
+import Typography from '../../components/Typography';
 
 const styles = theme => ({
   root: {
@@ -44,7 +44,7 @@ function ProductValues(props) {
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
         <img
-          src="/static/themes/onepirate/productCurvyLines.png"
+          src="/productCurvyLines.png"
           className={classes.curvyLines}
           alt="curvy lines"
         />
@@ -53,15 +53,14 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
+                src="/productValues1.svg"
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Healthy recipes
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Reimagine your health with unique, creative recipes.'}
               </Typography>
             </div>
           </Grid>
@@ -69,15 +68,15 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
+                src="/productValues2.svg"
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                New cultures
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'Experience the culture of new countries through delicious food '}
+                {'designed just for you.'}
               </Typography>
             </div>
           </Grid>
@@ -85,15 +84,15 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
+                src="/productValues3.svg"
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Goal-oriented friends
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'By using HealthyU, you will meet people all around the world who '}
+                {'will motivate you and keep you on track with your goals.'}
               </Typography>
             </div>
           </Grid>

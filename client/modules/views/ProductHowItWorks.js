@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import LayoutBody from '../components/LayoutBody';
-import Button from '../components/Button';
-import Typography from '../components/Typography';
+import LayoutBody from '../../components/LayoutBody';
+import Button from '../../components/Button';
+import Typography from '../../components/Typography';
 
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: '#cffcda',
     overflow: 'hidden',
   },
   layoutBody: {
@@ -58,11 +58,11 @@ function ProductHowItWorks(props) {
   return (
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
-        <img
-          src="productCurvyLines.png"
+        {/*<img
+          src="/productCurvyLines.png"
           className={classes.curvyLines}
           alt="curvy lines"
-        />
+        />*/}
         <Typography variant="h4" marked="center" className={classes.title} component="h2">
           How it works
         </Typography>
@@ -72,12 +72,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks1.svg"
+                  src="/productHowItWorks1.svg"
                   alt="suitcase"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  {'Sign up for a personalized profile.'}
                 </Typography>
               </div>
             </Grid>
@@ -85,12 +85,13 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks2.svg"
+                  src="/productHowItWorks2.svg"
                   alt="graph"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so be quick.
+                  {'Input your diet preferences, goals, and personal '}
+                  {'health information.'}
                 </Typography>
               </div>
             </Grid>
@@ -98,13 +99,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks3.svg"
+                  src="/productHowItWorks3.svg"
                   alt="clock"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                  {'Experience cultures through recipes catered to your needs.'}
                 </Typography>
               </div>
             </Grid>

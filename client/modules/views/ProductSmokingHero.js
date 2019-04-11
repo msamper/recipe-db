@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import LayoutBody from '../components/LayoutBody';
-import Typography from '../components/Typography';
+import LayoutBody from '../../components/LayoutBody';
+import Typography from '../../components/Typography';
 
 const styles = theme => ({
   root: {
@@ -41,7 +41,7 @@ function ProductSmokingHero(props) {
       <Typography variant="subtitle1" className={classes.link}>
         We are here to help. Get in touch!
       </Typography>
-      <img src="/static/themes/onepirate/producBuoy.svg" className={classes.buoy} alt="buoy" />
+      <img src="/producBuoy.svg" className={classes.buoy} alt="buoy" />
     </LayoutBody>
   );
 }
