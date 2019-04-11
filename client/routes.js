@@ -48,7 +48,7 @@ export default (
       }}
     />
     <Route
-      path="/apitest"
+      path="/recipes"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/API/pages/ApiTestPage').default);
@@ -60,14 +60,6 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./SignIn.js').default);
-        });
-      }}
-    />
-    <Route
-      path="/recipes"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./Recipes.js').default);
         });
       }}
     />

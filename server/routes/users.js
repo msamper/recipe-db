@@ -102,6 +102,6 @@ router.post('/login', (req, res) => {
 });
 
 // Get one user by id
-router.route('/profile/').get(UserController.getUser);
+router.route('/profile/:id').get(UserController.getUser);
 
 export default router;

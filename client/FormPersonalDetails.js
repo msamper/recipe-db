@@ -143,32 +143,11 @@ export class FormPersonalDetails extends Component {
               <em>None</em>
             </MenuItem>
             <MenuItem value="alcohol-free">Alcohol Free</MenuItem>
-            <MenuItem value="celery-free">Celery Free</MenuItem>
-            <MenuItem value="crustacean-free">Crustacean Free</MenuItem>
-            <MenuItem value="dairy-free">Dairy Free</MenuItem>
-            <MenuItem value="egg-free">Egg Free</MenuItem>
-            <MenuItem value="fish-free">Fish Free</MenuItem>
-            <MenuItem value="gluten-free">Gluten Free</MenuItem>
-            <MenuItem value="kidney-friendly">Kidney Friendly</MenuItem>
-            <MenuItem value="kosher">Kosher</MenuItem>
-            <MenuItem value="low-potassium">Low Potassium</MenuItem>
-            <MenuItem value="lupine-free">Lupine Free</MenuItem>
-            <MenuItem value="mustard-free">Mustard Free</MenuItem>
-            <MenuItem value="no-oil-added">No Oil Added</MenuItem>
-            <MenuItem value="low-sugar">No Sugar</MenuItem>
-            <MenuItem value="paleo">Paleo</MenuItem>
             <MenuItem value="peanut-free">Peanut Free</MenuItem>
-            <MenuItem value="pescatarian">Pescatarian</MenuItem>
-            <MenuItem value="pork-free">Pork Free</MenuItem>
-            <MenuItem value="red-meat-free">Red Meat Free</MenuItem>
-            <MenuItem value="sesame-free">Sesame Free</MenuItem>
-            <MenuItem value="shellfish-free">Shellfish Free</MenuItem>
-            <MenuItem value="soy-free">Soy Free</MenuItem>
             <MenuItem value="sugar-conscious">Sugar Conscious</MenuItem>
             <MenuItem value="tree-nut-free">Tree Nut Free</MenuItem>
             <MenuItem value="vegan">Vegan</MenuItem>
             <MenuItem value="vegetarian">Vegetarian</MenuItem>
-            <MenuItem value="wheat-free">Wheat Free</MenuItem>
           </Select>
           <br />
           <br />

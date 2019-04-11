@@ -7,7 +7,8 @@ import User from '../models/User';
  * @returns void
  */
 export function getUser(req, res) {
-  User.findOne({ _id: req.body.id }).exec((err, user) => {
+  console.log(req.params.id);
+  User.findById(req.params.id).exec((err, user) => {
     if (err) {
       res.status(500).send(err);
     }
