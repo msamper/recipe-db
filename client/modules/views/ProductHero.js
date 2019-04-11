@@ -49,7 +49,7 @@ function ProductHero(props) {
         size="large"
         className={classes.button}
         component={linkProps => (
-          <Link {...linkProps} href="/premium-themes/onepirate/sign-up" variant="button" />
+          <Link {...linkProps} href="/sign-up" variant="button" />
         )}
       >
         Register
