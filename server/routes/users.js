@@ -16,6 +16,8 @@ import User from '../models/User';
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
+  console.log('ENTERING REGISTER BACKEND');
+  console.log(req.body);
   // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
 // Check validation
@@ -30,10 +32,10 @@ router.post('/register', (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      age: req.body.age,
       bmi: req.body.bmi,
-      allergens: JSON.parse(req.body.allergens),
-      diet_goal: req.body.diet_goal,
-      diet_type: JSON.parse(req.body.diet_type),
+      diet_type: req.body.diet_type,
+      diet_preferences: req.body.diet_preferences,
     });
 // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {

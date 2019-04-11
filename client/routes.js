@@ -43,7 +43,6 @@ export default (
       path="/sign-up"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          // cb(null, require('./modules/API/pages/ApiTestPage').default);
           cb(null, require('./SignUp.js').default);
         });
       }}
@@ -73,14 +72,6 @@ export default (
       }}
     />
     <Route
-      path="/sign-up-next"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./SignUpNext.js').default);
-        });
-      }}
-    />
-    <Route
       path="/profile"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
@@ -92,7 +83,7 @@ export default (
       path="/signuptest"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./SignUpTest.js').default);
+          cb(null, require('./SignUpOrig.js').default);
         });
       }}
     />

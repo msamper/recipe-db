@@ -1,13 +1,10 @@
 import withRoot from './modules/withRoot';
 // --- Post bootstrap -----
 import React from 'react';
-import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { loginUser } from './modules/App/actions/authActions';
-import classnames from 'classnames';
 import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from './components/Typography';
@@ -16,6 +13,11 @@ import { email, required } from './modules/form/validation';
 import RFTextField from './modules/form/RFTextField';
 import FormButton from './modules/form/FormButton';
 import FormFeedback from './modules/form/FormFeedback';
+import Button from '@material-ui/core/Button';
+
+<Button component={Link} to="/open-collective">
+  Link
+</Button>
 
 const styles = theme => ({
   form: {
@@ -30,35 +32,24 @@ const styles = theme => ({
   },
 });
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
+  state = {
+    sent: false,
+  };
+
   constructor() {
     super();
     this.state = {
+      name: '',
       email: '',
       password: '',
+      password2: '',
       errors: {},
-      sent: false,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // const { history } = this.props;
-    console.log('hello');
-    if (nextProps.auth.isAuthenticated) {
-      console.log('yay');
-      browserHistory.push('/'); // push user to dashboard when they login
-    }
-
-    if (nextProps.errors) {
-      console.log('oh no');
-      this.setState({
-        errors: nextProps.errors,
-      });
-    }
-  }
-
   validate = values => {
-    const errors = required(['email', 'password'], values, this.props);
+    const errors = required(['firstName', 'lastName', 'email', 'password', 'password2'], values, this.props);
 
     if (!errors.email) {
       const emailError = email(values.email, values, this.props);
@@ -70,41 +61,34 @@ class SignIn extends React.Component {
     return errors;
   };
 
-  handleSubmit = values => {
-    // axios.post('/api/users/login', {
-    //   email: values.email,
-    //   password: values.password,
-    // })
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    const userData = {
-      email: values.email,
-      password: values.password,
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  // TODO
+  handleSubmit = () => {
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2,
     };
-    this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+    console.log(newUser);
   };
 
   render() {
     const { classes } = this.props;
     const { sent } = this.state;
-    const { errors } = this.state;
 
     return (
       <React.Fragment>
         <AppForm>
           <React.Fragment>
             <Typography variant="h3" gutterBottom marked="center" align="center">
-              Sign In
+              Sign Up
             </Typography>
             <Typography variant="body2" align="center">
-              {'Not a member yet? '}
-              <Link href="/signuptest" align="center" underline="always">
-                Sign Up here
+              <Link href="/sign-in" underline="always">
+                Already have an account?
               </Link>
             </Typography>
           </React.Fragment>
@@ -115,29 +99,71 @@ class SignIn extends React.Component {
           >
             {({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className={classes.form} noValidate>
+                <Grid container spacing={16}>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      autoFocus
+                      component={RFTextField}
+                      onChange={this.onChange}
+                      value={this.state.firstName}
+                      autoComplete="fname"
+                      fullWidth
+                      label="First name"
+                      name="firstName"
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      component={RFTextField}
+                      onChange={this.onChange}
+                      value={this.state.lastName}
+                      autoComplete="lname"
+                      fullWidth
+                      label="Last name"
+                      name="lastName"
+                      required
+                    />
+                  </Grid>
+                </Grid>
                 <Field
                   autoComplete="email"
-                  autoFocus
                   component={RFTextField}
                   disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.email}
                   fullWidth
                   label="Email"
                   margin="normal"
                   name="email"
                   required
-                  size="large"
-                  error={errors.email != null || errors.emailnotfound != null}
-                  errorText="TESTING"
                 />
                 <Field
                   fullWidth
-                  size="large"
                   component={RFTextField}
                   disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.password}
                   required
                   name="password"
                   autoComplete="current-password"
                   label="Password"
+                  type="password"
+                  margin="normal"
+                />
+                <Button variant="outlined" href="/sign-up-next" className={classes.button} color="secondary" fullWidth>
+                  Next
+                </Button>
+                <Field
+                  fullWidth
+                  component={RFTextField}
+                  disabled={submitting || sent}
+                  onChange={this.onChange}
+                  value={this.state.password2}
+                  required
+                  name="password2"
+                  autoComplete="current-password"
+                  label="Confirm Password"
                   type="password"
                   margin="normal"
                 />
@@ -153,43 +179,25 @@ class SignIn extends React.Component {
                 <FormButton
                   className={classes.button}
                   disabled={submitting || sent}
-                  size="large"
                   color="secondary"
                   fullWidth
                 >
-                  {submitting || sent ? 'In progress…' : 'Sign In'}
+                  {submitting || sent ? 'In progress…' : 'Sign Up'}
                 </FormButton>
               </form>
             )}
           </Form>
-          <Typography align="center">
-            <Link underline="always" href="/forgot-password">
-              Forgot password?
-            </Link>
-          </Typography>
         </AppForm>
       </React.Fragment>
     );
   }
 }
 
-SignIn.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.error,
-});
 
 export default compose(
   withRoot,
   withStyles(styles),
-  connect(
-    mapStateToProps,
-    { loginUser }
-  ),
-)(SignIn);
+)(SignUp);

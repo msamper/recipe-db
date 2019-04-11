@@ -22,6 +22,9 @@ const UserSchema = new Schema({
   updated_at: {
     type: Date,
   },
+  age: {
+    type: Number,
+  },
   bmi: {
     type: Number,
   },
@@ -29,7 +32,7 @@ const UserSchema = new Schema({
     type: [String],
   },
   diet_type: {
-    type: [String],
+    type: String,
     enum: ['balanced', 'high-protein', 'high-fiber', 'low-fat', 'low-carb', 'low-sodium'],
   },
   favorites: {

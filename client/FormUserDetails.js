@@ -5,17 +5,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
 import Link from '@material-ui/core/Link';
-import { email, required } from './modules/form/validation';
+// import { email, required } from './modules/form/validation';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Typography from './modules/components/Typography';
+import Typography from './components/Typography';
 import AppForm from './modules/views/AppForm';
 import Grid from '@material-ui/core/Grid';
 import { Field, Form, FormSpy } from 'react-final-form';
-
-<Button component={Link} to="/open-collective">
-  Link
-</Button>
 
 const styles = theme => ({
   form: {
@@ -35,44 +31,13 @@ const styles = theme => ({
   },
 });
 
-// const validate = values => {
-//   const errors = {}
-//   if (!values.firstName) {
-//     errors.firstName = 'Required';
-//   }
-//   if (!values.lastName) {
-//     errors.lastName = 'Required';
-//   }
-//   if (!values.email) {
-//     errors.email = 'Required';
-//   }
-//   if (!values.password) {
-//     errors.password = 'Required';
-//   }
-//   return errors;
-// };
-
 export class FormUserDetails extends Component {
-  validate = values => {
-    const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
-
-    if (!errors.email) {
-      const emailError = email(values.email, values, this.props);
-      if (emailError) {
-        errors.email = email(values.email, values, this.props);
-      }
-    }
-
-    return errors;
-  };
-
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
   render() {
-    const { values, handleChange } = this.props;
-    //const { classes } = this.props;
+    const { values, handleChange} = this.props;
     return (
       <React.Fragment>
           <AppForm>
@@ -140,6 +105,7 @@ export class FormUserDetails extends Component {
                   label="Password"
                   onChange={handleChange('password')}
                   defaultValue={values.password}
+                  type="password"
                   required
                 />
               </Grid>
@@ -151,7 +117,8 @@ export class FormUserDetails extends Component {
               label="Continue"
               color="secondary"
               style={styles.button}
-              onClick={this.continue}>
+              onClick={this.continue}
+            >
               Continue
             </Button>
           </AppForm>
@@ -163,7 +130,6 @@ export class FormUserDetails extends Component {
 FormUserDetails.propTypes = {
   classes: PropTypes.object.isRequired,
   values: PropTypes.object.isRequired,
-
 };
 
 export default compose(

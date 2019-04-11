@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import AppBar from '../../../components/AppBar';
-import Toolbar, { styles as toolbarStyles } from '../../../components/Toolbar';
+import AppBar from '../../../../components/AppBar';
+import Toolbar, { styles as toolbarStyles } from '../../../../components/Toolbar';
 
 const styles = theme => ({
   title: {
@@ -38,6 +38,64 @@ const styles = theme => ({
 function AppAppBar(props) {
   const { classes } = props;
 
+  const onLogoutClick = e => {
+    e.preventDefault();
+    props.logoutUser();
+  };
+
+  const loginOrUser = (auth) => {
+    return auth.isAuthenticated ?
+      <div className={classes.right}>
+        <Link
+          variant="h6"
+          underline="none"
+          className={classNames(classes.rightLink, classes.rightLink)}
+          href="/recipes"
+        >
+          {'Recipes'}
+        </Link>
+        <Link
+          variant="h6"
+          underline="none"
+          className={classNames(classes.rightLink, classes.rightLink)}
+          href="/profile"
+        >
+          {'Profile'}
+        </Link>
+        <Link
+          variant="h6"
+          underline="none"
+          className={classNames(classes.rightLink, classes.linkSecondary)}
+          onClick={onLogoutClick}
+          href="/"
+        >
+          {'Log Out'}
+        </Link>
+      </div>
+
+      :
+
+      <div className={classes.right}>
+        <Link
+          color="inherit"
+          variant="h6"
+          underline="none"
+          className={classes.rightLink}
+          href="/sign-in"
+        >
+          {'Sign In'}
+        </Link>
+        <Link
+          variant="h6"
+          underline="none"
+          className={classNames(classes.rightLink, classes.linkSecondary)}
+          href="/sign-up"
+        >
+          {'Sign Up'}
+        </Link>
+      </div>
+  };
+
   return (
     <div>
       <AppBar position="fixed">
@@ -52,57 +110,7 @@ function AppAppBar(props) {
           >
             {'HealthyU'}
           </Link>
-          <div className={classes.right}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
-              href="/sign-in"
-            >
-              {'Sign In'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="/sign-up"
-            >
-              {'Sign Up'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.rightLink)}
-              href="/recipes"
-            >
-              {'Recipes'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.rightLink)}
-              href="/profile"
-            >
-              {'Profile'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="/logout"
-            >
-              {'Log Out'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="/signuptest"
-            >
-              {'Test'}
-            </Link>
-          </div>
+          {loginOrUser(props.auth)}
         </Toolbar>
       </AppBar>
       <div className={classes.placeholder} />
@@ -112,6 +120,8 @@ function AppAppBar(props) {
 
 AppAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(AppAppBar);

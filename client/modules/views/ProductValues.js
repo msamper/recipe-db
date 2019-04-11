@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import LayoutBody from '../components/LayoutBody';
-import Typography from '../components/Typography';
+import LayoutBody from '../../components/LayoutBody';
+import Typography from '../../components/Typography';
 
 const styles = theme => ({
   root: {
@@ -75,7 +75,7 @@ function ProductValues(props) {
                 New cultures
               </Typography>
               <Typography variant="h5">
-                {'Experience the cultures of new countries through delicious food '}
+                {'Experience the culture of new countries through delicious food '}
                 {'designed just for you.'}
               </Typography>
             </div>

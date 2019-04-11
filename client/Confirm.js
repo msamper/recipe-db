@@ -1,9 +1,9 @@
 import withRoot from './modules/withRoot';
 // --- Post bootstrap -----
 import React, { Component } from 'react';
-import Link from '@material-ui/core/Link';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import Typography from './modules/components/Typography';
+import Typography from './components/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -12,19 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import AppForm from './modules/views/AppForm';
-
-<Button component={Link} to="/open-collective">
-  Link
-</Button>
-
-// function getSelectValues (vals) {
-//   var result = '';
-//   for (var i = 0; i < vals.size; i++) {
-//     result += vals[i];
-//     result += ', ';
-//   }
-//   return result;
-// };
+import { registerUser } from './modules/App/actions/authActions';
+import classnames from 'classnames';
 
 const styles = theme => ({
   form: {
@@ -40,9 +29,10 @@ const styles = theme => ({
 });
 
 export class Confirm extends Component {
-  continue = e => {
+  submit = e => {
     e.preventDefault();
     // Process form
+    this.props.handleSubmit();
     this.props.nextStep();
   };
   back = e => {
@@ -51,7 +41,6 @@ export class Confirm extends Component {
   };
   render() {
     const { values: { firstName, lastName, email, password, age, bmi, dietTypes, dietPreferences } } = this.props;
-    //const { classes } = this.props;
     return (
       <AppForm>
         <React.Fragment>
@@ -130,7 +119,7 @@ export class Confirm extends Component {
                 label="Confirm"
                 color="secondary"
                 style={styles.button}
-                onClick={this.continue}>
+                onClick={this.submit}>
                 Confirm
               </Button>
             </Grid>
@@ -145,9 +134,21 @@ Confirm.propTypes = {
   classes: PropTypes.object.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.object.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
 };
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors,
+});
 
 export default compose(
   withRoot,
   withStyles(styles),
+  connect(
+    mapStateToProps,
+    { registerUser }
+  ),
 )(Confirm);

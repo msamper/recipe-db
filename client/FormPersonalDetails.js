@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Typography from './modules/components/Typography';
+import Typography from './components/Typography';
 import AppForm from './modules/views/AppForm';
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
@@ -54,7 +54,6 @@ export class FormPersonalDetails extends Component {
   // };
   render() {
     const { values, handleChange } = this.props;
-    //const { classes } = this.props;
     return (
       <React.Fragment>
         <AppForm>
@@ -126,7 +125,7 @@ export class FormPersonalDetails extends Component {
           <br />
           <br />
           <InputLabel>
-            Diet Preferences
+            Diet Preferences (Select multiple)
           </InputLabel>
           <Select
             multiple

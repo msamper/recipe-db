@@ -1,14 +1,17 @@
 import withRoot from './modules/withRoot';
 // --- Post bootstrap -----
-import React, { Component } from 'react';
+import React, { Component, Children } from 'react';
+import { withRouter } from 'react-router-dom';
+import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
 import Success from './Success';
-import compose from 'recompose/compose';
-import { withStyles } from '@material-ui/core/styles';
+import { registerUser } from './modules/App/actions/authActions';
 
-export class UserForm extends Component {
+class UserForm extends Component {
   state = {
     step: 1,
     firstName: '',
@@ -19,34 +22,46 @@ export class UserForm extends Component {
     bmi: '',
     dietTypes: '',
     dietPreferences: [],
+    errors: {},
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
+  }
   nextStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step + 1
+      step: step + 1,
     });
   };
   prevStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step - 1
+      step: step - 1,
     });
   };
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
-  // handleChangeMultiple = event => {
-  //   const { options } = event.target;
-  //   const value = [];
-  //   for (let i = 0, l = options.length; i < l; i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   this.setState({
-  //     name: value,
-  //   });
-  // };
+
+  handleSubmit = () => {
+    const user = {
+      name: `${this.state.firstName} ${this.state.lastName}`,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password,
+      age: this.state.age,
+      bmi: this.state.bmi,
+      diet_type: this.state.dietTypes,
+      diet_preferences: this.state.dietPreferences,
+    };
+    console.log(user);
+    this.props.registerUser(user, browserHistory);
+  };
   render() {
     const { step } = this.state;
     const { firstName, lastName, email, password, age, bmi, dietTypes, dietPreferences } = this.state;
@@ -66,7 +81,6 @@ export class UserForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
-            //handleChangeMultiple={this.handleChangeMultiple}
             values={values}
           />
         );
@@ -75,14 +89,31 @@ export class UserForm extends Component {
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handleSubmit={this.handleSubmit}
             values={values}
           />
         );
       case 4:
-        return <Success />;
+        return (
+          <Success />
+        );
+        // browserHistory.push('/sign-in');
     }
   }
 }
 
-export default UserForm;
+UserForm.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.error,
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(UserForm);
 

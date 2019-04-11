@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Typography from './modules/components/Typography';
+import Typography from './components/Typography';
 import AppForm from './modules/views/AppForm';
 import compose from 'recompose/compose';
 import withRoot from './modules/withRoot';

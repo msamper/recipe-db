@@ -12,7 +12,8 @@ import Footer from './components/Footer/Footer';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
-import { switchLanguage } from '../../modules/Intl/IntlActions';
+
+import { logoutUser } from './actions/authActions';
 
 // let DevTools;
 // if (process.env.NODE_ENV === 'development') {
@@ -53,7 +54,10 @@ export class App extends Component {
               },
             ]}
           />
-          <Header />
+          <Header
+            auth={this.props.auth}
+            logoutUser={this.props.logoutUser}
+          />
           <div className={styles.container}>
             {this.props.children}
           </div>
@@ -68,13 +72,18 @@ App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    auth: store.auth,
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  { logoutUser },
+  )(App);

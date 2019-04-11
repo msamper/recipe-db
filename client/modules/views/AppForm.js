@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import LayoutBody from '../components/LayoutBody';
-import Paper from '../components/Paper';
+import LayoutBody from '../../components/LayoutBody';
+import Paper from '../../components/Paper';
 
 const styles = theme => ({
   root: {

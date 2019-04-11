@@ -9,7 +9,7 @@ import bg from '../../header-bk.png';
 
 export function Footer() {
   return (
-    <div style={{ background: `#308e41 center` }} className={styles.footer}>
+    <div style={{ background: '#308e41 center' }} className={styles.footer}>
       <p>&copy; 2019 &middot; Michael Samper &middot; Georgia Hayes</p>
       <p><FormattedMessage id="twitterMessage" /> : <a href="https://twitter.com/@msamper13" target="_Blank">@msamper13</a></p>
     </div>
