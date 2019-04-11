@@ -71,17 +71,6 @@ class SignIn extends React.Component {
   };
 
   handleSubmit = values => {
-    // axios.post('/api/users/login', {
-    //   email: values.email,
-    //   password: values.password,
-    // })
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
     const userData = {
       email: values.email,
       password: values.password,
