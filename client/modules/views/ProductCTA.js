@@ -106,7 +106,6 @@ class ProductCTA extends React.Component {
           <Grid item xs={12} md={12} className={classes.cardWrapper}>
             <div className={classes.card}>
               <form onSubmit={this.handleSubmit} className={classes.cardContent}>
-                {/*<Typography variant="h2" component="h2" gutterBottom color="secondary">*/}
                 <Typography className={classes.fontLarge}>
                   CONTACT US
                 </Typography>

@@ -277,9 +277,9 @@ class RecipeReviewCard extends React.Component {
                       <Typography paragraph><b>Ingredients:</b></Typography>
                       <Typography>
                         <ul>
-                          {item.ingredientLines.map((ingredient, index) => (
-                            <Typography paragraph>
-                              <li key={index}>{ingredient}</li>
+                          {item.ingredientLines.map((ingredient, i) => (
+                            <Typography paragraph key={i}>
+                              <li>{ingredient}</li>
                             </Typography>
                           ))}
                         </ul>
@@ -287,24 +287,24 @@ class RecipeReviewCard extends React.Component {
                     </CardContent>
                   </Collapse>
                 </Card>
-                <Modal
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                  open={this.state.open}
-                  onClose={this.handleClose}
-                >
-                  <div style={getModalStyle()} className={classes.paper}>
-                    <Typography variant="h6" id="modal-title">
-                      {this.state.populateModal}
-                    </Typography>
-                    <Typography variant="subtitle1" id="simple-modal-description">
-                      Fun nutrition info will go here in an easy to read table!
-                    </Typography>
-                  </div>
-                </Modal>
               </Grid>
             ))}
         </Grid>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="h6" id="modal-title">
+              {this.state.populateModal}
+            </Typography>
+            <Typography variant="subtitle1" id="simple-modal-description">
+              Fun nutrition info will go here in an easy to read table!
+            </Typography>
+          </div>
+        </Modal>
       </div>
     );
   }
