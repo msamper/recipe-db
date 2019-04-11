@@ -136,8 +136,8 @@ class RecipeReviewCard extends React.Component {
       q: 'chicken',
       diet: '',
       health: [],
-      cuisine: 'indian',
       search: '',
+      populateModal: 'fwefewfwe',
     };
   }
 
@@ -197,10 +197,11 @@ class RecipeReviewCard extends React.Component {
   };
   handleOpen = () => {
     this.setState({ open: true });
-    // this.populateModal(index);
+    //this.setState({ populateModal: item });
   };
   handleClose = () => {
     this.setState({ open: false });
+    //this.setState({ populateModal: {} });
   };
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
@@ -225,7 +226,7 @@ class RecipeReviewCard extends React.Component {
           margin="normal"
           variant="outlined"
         />
-        <Fab color="primary" aria-label="Add" onClick={this.handleSearch} className={classes.fab}>
+        <Fab color="primary" aria-label="Search" onClick={this.handleSearch} className={classes.fab}>
           <SearchIcon />
         </Fab>
         <Grid container spacing={8}>
@@ -240,16 +241,16 @@ class RecipeReviewCard extends React.Component {
                   <CardHeader
                     className={classes.title}
                     title={item.label}
-                    subheader={`${Math.round(item.calories)} Cal`}
+                    subheader={`${Math.round(item.calories)} Cal / Yields ${item.yield}`}
                   />
                   <CardContent>
                     <Typography component="p">
                       <b>Diet Preferences: </b>{item.dietLabels.map(health => (
-                      `${health} `
-                    ))}<br />
+                      `${health}`
+                    )).join(', ')}<br />
                       <b>Diet Restrictions: </b>{item.healthLabels.map(health => (
-                        `${health}, `
-                      ))}<br />
+                        `${health}`
+                      )).join(', ')}<br />
                       <Link href={item.url}>Check out this recipe</Link>
                     </Typography>
                   </CardContent>
@@ -286,23 +287,23 @@ class RecipeReviewCard extends React.Component {
                     </CardContent>
                   </Collapse>
                 </Card>
+                <Modal
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                >
+                  <div style={getModalStyle()} className={classes.paper}>
+                    <Typography variant="h6" id="modal-title">
+                      {this.state.populateModal}
+                    </Typography>
+                    <Typography variant="subtitle1" id="simple-modal-description">
+                      Fun nutrition info will go here in an easy to read table!
+                    </Typography>
+                  </div>
+                </Modal>
               </Grid>
             ))}
-          <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={this.state.open}
-            onClose={this.handleClose}
-          >
-            <div style={getModalStyle()} className={classes.paper}>
-              <Typography variant="h6" id="modal-title">
-                Recipe title!
-              </Typography>
-              <Typography variant="subtitle1" id="simple-modal-description">
-                Fun nutrition info will go here in an easy to read graph!
-              </Typography>
-            </div>
-          </Modal>
         </Grid>
       </div>
     );
