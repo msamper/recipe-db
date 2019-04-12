@@ -40,6 +40,7 @@ const styles = theme => ({
   },
   button: {
     width: '100%',
+    marginTop: theme.spacing.unit * 2,
   },
   imagesWrapper: {
     position: 'relative',
@@ -62,6 +63,20 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 600,
   },
+  fontLarge: {
+    height: 80,
+    width: '100%',
+    display: 'block',
+    fontSize: '50px',
+    color: '#FFFFFF',
+  },
+  font: {
+    height: 60,
+    width: '100%',
+    display: 'block',
+    fontSize: '16px',
+    color: '#FFFFFF',
+  }
 });
 
 class ProductCTA extends React.Component {
@@ -91,20 +106,18 @@ class ProductCTA extends React.Component {
           <Grid item xs={12} md={12} className={classes.cardWrapper}>
             <div className={classes.card}>
               <form onSubmit={this.handleSubmit} className={classes.cardContent}>
-                <Typography variant="h2" component="h2" gutterBottom color="secondary">
-                  Contact us
+                <Typography className={classes.fontLarge}>
+                  CONTACT US
                 </Typography>
-                <Typography variant="h5" color="secondary">
+                <Typography className={classes.font}>
                   Send us an email to give us your suggestions, offer new recipes, or just say hello!
                 </Typography>
-                <TextField noBorder className={classes.textField} placeholder="Name" />
-                <TextField noBorder className={classes.textField} placeholder="Email" />
-                <TextBox noBorder className={classes.textBox} placeholder="Message" />
                 <Button
                   type="submit"
                   color="secondary"
                   variant="contained"
                   className={classes.button}
+                  href="mailto:gahayes97@ufl.edu,msamper@ufl.edu?subject=HealthyU User Email"
                 >
                   Send email
                 </Button>

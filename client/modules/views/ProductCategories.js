@@ -89,56 +89,56 @@ function ProductCategories(props) {
   const images = [
     {
       url:
-        'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80',
-      title: 'Snorkeling',
+        'https://www.averiecooks.com/wp-content/uploads/2018/04/butterchicken-11.jpg',
+      title: 'Indian',
       width: '40%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400&q=80',
-      title: 'Massage',
+        'https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/06/26/14/arigoldburger.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+      title: 'American',
       width: '20%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
-      title: 'Hiking',
+        'https://images.tienda.com/is/image/LaTienda/mixed-seafood-paella?&wid=1087',
+      title: 'Spanish',
       width: '40%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80',
-      title: 'Tour',
+        'https://heatherchristo.com/wp-content/uploads/2014/01/Spicy-Thai-Curry-Soup-from-HeatherChristo.com_.jpg',
+      title: 'Thai',
       width: '38%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80',
-      title: 'Gastronomy',
+        'https://www.azamaraclubcruises.com/sites/default/files/heros/japan-food-blog-hero.jpg',
+      title: 'Japanese',
       width: '38%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80',
-      title: 'Shopping',
+        'https://cms.splendidtable.org/sites/default/files/styles/w2000/public/155841402.jpg?itok=M7v4Sy3t',
+      title: 'Russian',
       width: '24%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80',
-      title: 'Walking',
+        'https://kiskametals.com/wp-content/uploads/2018/12/italian-food-bbcgoodfoodmecom.png',
+      title: 'Italian',
       width: '40%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&w=400&q=80',
-      title: 'Fitness',
+        'http://www.upmixed.com/wp-content/uploads/2019/02/UpMixed-french-food-favorite-traditional-meals-french-cuisine.png',
+      title: 'French',
       width: '20%',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80',
-      title: 'Reading',
+        'https://static01.nyt.com/images/2018/01/22/dining/22COOKING-OXTAILSTEW/22COOKING-OXTAILSTEW-articleLarge.jpg',
+      title: 'Jamaican',
       width: '40%',
     },
   ];
@@ -146,7 +146,7 @@ function ProductCategories(props) {
   return (
     <LayoutBody className={classes.root} component="section" width="large">
       <Typography variant="h4" marked="center" align="center" component="h2">
-        For all tastes and all desires
+        Discover food from around the world
       </Typography>
       <div className={classes.images}>
         {images.map(image => (
