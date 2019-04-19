@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
@@ -41,6 +42,7 @@ function AppAppBar(props) {
   const onLogoutClick = e => {
     e.preventDefault();
     props.logoutUser();
+    browserHistory.push('/');
   };
 
   const loginOrUser = (auth) => {
