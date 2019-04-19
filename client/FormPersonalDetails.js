@@ -98,7 +98,7 @@ export class FormPersonalDetails extends Component {
           </Grid>
           <br />
           <InputLabel>
-            Diet Types
+            Diet Type
           </InputLabel>
           <Select
             fullWidth
@@ -123,7 +123,7 @@ export class FormPersonalDetails extends Component {
           <br />
           <br />
           <InputLabel>
-            Diet Preferences (Select multiple)
+            Diet Restrictions (Select multiple)
           </InputLabel>
           <Select
             multiple

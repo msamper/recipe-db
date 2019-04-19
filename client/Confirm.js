@@ -87,7 +87,7 @@ export class Confirm extends Component {
               </ListItem>
               <ListItem>
                 <ListItemText
-                  primary="Diet Types"
+                  primary="Diet Type"
                   secondary={dietTypes}
                 />
               </ListItem>

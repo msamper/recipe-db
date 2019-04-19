@@ -232,8 +232,8 @@ class RecipeReviewCard extends React.Component {
         </Fab>
         <Grid container spacing={8}>
             {this.state.recipes.map((item, index) => (
-              <Grid item>
-                <Card key={index} className={classes.card}>
+              <Grid item key={index}>
+                <Card className={classes.card}>
                   <CardMedia
                     className={classes.media}
                     image={item.image}
@@ -246,7 +246,7 @@ class RecipeReviewCard extends React.Component {
                   />
                   <CardContent>
                     <Typography component="p">
-                      <b>Diet Preferences: </b>{item.dietLabels.map(health => (
+                      <b>Diet Types: </b>{item.dietLabels.map(health => (
                       `${health}`
                     )).join(', ')}<br />
                       <b>Diet Restrictions: </b>{item.healthLabels.map(health => (

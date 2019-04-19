@@ -78,13 +78,13 @@ class Profile extends Component {
               </ListItem>
               <ListItem>
                 <ListItemText
-                  primary="Diet Types"
+                  primary="Diet Type"
                   secondary={this.state.dietTypes}
                 />
               </ListItem>
               <ListItem>
                 <ListItemText
-                  primary="Diet Preferences"
+                  primary="Diet Restrictions"
                   secondary={this.state.dietPreferences}
                 />
               </ListItem>
