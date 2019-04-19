@@ -195,8 +195,9 @@ class RecipeReviewCard extends React.Component {
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
-  handleOpen = () => {
+  handleOpen = (label) => {
     this.setState({ open: true });
+    console.log(label);
     //this.setState({ populateModal: item });
   };
   handleClose = () => {
@@ -258,7 +259,7 @@ class RecipeReviewCard extends React.Component {
                     <IconButton aria-label="Add to favorites">
                       <FavoriteIcon />
                     </IconButton>
-                    <IconButton aria-label="View nutrition details" onClick={this.handleOpen}>
+                    <IconButton aria-label="View nutrition details" onClick={this.handleOpen(item.label)}>
                       <FastFoodIcon />
                     </IconButton>
                     <IconButton
