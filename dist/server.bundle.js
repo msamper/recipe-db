@@ -119,10 +119,16 @@ module.exports = require("react-redux");
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("mongoose");
+module.exports = require("react-router");
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("mongoose");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -141,16 +147,10 @@ var config = {
 exports.default = config;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = require("@material-ui/core/styles");
 
 /***/ }),
 /* 8 */
@@ -619,7 +619,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mongoose = __webpack_require__(4);
+var _mongoose = __webpack_require__(5);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
@@ -738,7 +738,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Set logged in user
 var setCurrentUser = exports.setCurrentUser = function setCurrentUser(decoded) {
-  console.log('setCurrentUser');
   return {
     type: _types.SET_CURRENT_USER,
     payload: decoded
@@ -753,8 +752,6 @@ var setUserLoading = exports.setUserLoading = function setUserLoading() {
 // Register User
 var registerUser = exports.registerUser = function registerUser(userData, history) {
   return function (dispatch) {
-    console.log('entering register');
-    console.log(userData);
     _axios2.default.post('/api/users/register', userData).then(function (res) {
       return history.push('/sign-in');
     }) // re-direct to login on successful register
@@ -774,13 +771,11 @@ var loginUser = exports.loginUser = function loginUser(userData) {
       // Set token to localStorage
       var token = res.data.token;
 
-      console.log(token);
       localStorage.setItem('jwtToken', token);
       // Set token to Auth header
       (0, _setAuthToken2.default)(token);
       // Decode token to get user data
       var decoded = (0, _jwtDecode2.default)(token);
-      console.log(decoded);
       localStorage.setItem('userId', decoded.id);
       // Set current user
       dispatch(setCurrentUser(decoded));
@@ -826,7 +821,7 @@ var _compression = __webpack_require__(28);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _mongoose = __webpack_require__(4);
+var _mongoose = __webpack_require__(5);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
@@ -856,7 +851,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _server = __webpack_require__(54);
 
-var _reactRouter = __webpack_require__(7);
+var _reactRouter = __webpack_require__(4);
 
 var _reactHelmet = __webpack_require__(13);
 
@@ -876,7 +871,7 @@ var _dummyData = __webpack_require__(77);
 
 var _dummyData2 = _interopRequireDefault(_dummyData);
 
-var _keys = __webpack_require__(5);
+var _keys = __webpack_require__(6);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -1202,7 +1197,7 @@ var _isomorphicFetch = __webpack_require__(37);
 
 var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
-var _keys = __webpack_require__(5);
+var _keys = __webpack_require__(6);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -1559,7 +1554,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(7);
+var _reactRouter = __webpack_require__(4);
 
 var _App = __webpack_require__(56);
 
@@ -1789,11 +1784,13 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _reactRouter = __webpack_require__(4);
+
 var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styles = __webpack_require__(6);
+var _styles = __webpack_require__(7);
 
 var _Link = __webpack_require__(25);
 
@@ -1847,6 +1844,7 @@ function AppAppBar(props) {
   var onLogoutClick = function onLogoutClick(e) {
     e.preventDefault();
     props.logoutUser();
+    _reactRouter.browserHistory.push('/');
   };
 
   var loginOrUser = function loginOrUser(auth) {
@@ -1924,7 +1922,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = __webpack_require__(6);
+var _styles = __webpack_require__(7);
 
 var _AppBar = __webpack_require__(59);
 
@@ -1969,7 +1967,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(6);
+var _styles = __webpack_require__(7);
 
 var _Toolbar = __webpack_require__(61);
 
@@ -2287,7 +2285,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouter = __webpack_require__(7);
+var _reactRouter = __webpack_require__(4);
 
 var _reactIntl = __webpack_require__(2);
 
@@ -2515,7 +2513,7 @@ var _user = __webpack_require__(72);
 
 var UserController = _interopRequireWildcard(_user);
 
-var _keys = __webpack_require__(5);
+var _keys = __webpack_require__(6);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -2542,10 +2540,7 @@ var validateLoginInput = __webpack_require__(76);
 // @desc Register user
 // @access Public
 router.post('/register', function (req, res) {
-  console.log('ENTERING REGISTER BACKEND');
-  console.log(req.body);
   // Form validation
-
   var _validateRegisterInpu = validateRegisterInput(req.body),
       errors = _validateRegisterInpu.errors,
       isValid = _validateRegisterInpu.isValid;
@@ -2807,7 +2802,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mongoose = __webpack_require__(4);
+var _mongoose = __webpack_require__(5);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
@@ -2952,7 +2947,7 @@ module.exports = require("webpack-hot-middleware");
 "use strict";
 
 
-var _keys = __webpack_require__(5);
+var _keys = __webpack_require__(6);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -2960,7 +2955,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var JwtStrategy = __webpack_require__(23).Strategy;
 var ExtractJwt = __webpack_require__(23).ExtractJwt;
-var mongoose = __webpack_require__(4);
+var mongoose = __webpack_require__(5);
 var User = mongoose.model('users');
 var opts = {};
 

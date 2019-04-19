@@ -9,7 +9,6 @@ import {
 
 // Set logged in user
 export const setCurrentUser = decoded => {
-  console.log('setCurrentUser');
   return {
     type: SET_CURRENT_USER,
     payload: decoded,
@@ -23,8 +22,6 @@ export const setUserLoading = () => {
 };
 // Register User
 export const registerUser = (userData, history) => dispatch => {
-  console.log('entering register');
-  console.log(userData);
   axios
     .post('/api/users/register', userData)
     .then(res => history.push('/sign-in')) // re-direct to login on successful register
@@ -43,13 +40,11 @@ export const loginUser = userData => dispatch => {
       // Save to localStorage
       // Set token to localStorage
       const { token } = res.data;
-      console.log(token);
       localStorage.setItem('jwtToken', token);
       // Set token to Auth header
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
-      console.log(decoded);
       localStorage.setItem('userId', decoded.id);
       // Set current user
       dispatch(setCurrentUser(decoded));

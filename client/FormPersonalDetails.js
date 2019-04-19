@@ -117,10 +117,8 @@ export class FormPersonalDetails extends Component {
             </MenuItem>
             <MenuItem value="balanced">Balanced</MenuItem>
             <MenuItem value="high-protein">High Protein</MenuItem>
-            <MenuItem value="high-fiber">High Fiber</MenuItem>
             <MenuItem value="low-fat">Low Fat</MenuItem>
             <MenuItem value="low-carb">Low Carb</MenuItem>
-            <MenuItem value="low-sodium">Low Sodium</MenuItem>
           </Select>
           <br />
           <br />

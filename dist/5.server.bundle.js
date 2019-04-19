@@ -27,7 +27,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = __webpack_require__(6);
+var _styles = __webpack_require__(7);
 
 var _compose = __webpack_require__(89);
 
