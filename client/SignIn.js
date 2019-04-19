@@ -46,7 +46,7 @@ class SignIn extends React.Component {
     console.log('hello');
     if (nextProps.auth.isAuthenticated) {
       console.log('yay');
-      browserHistory.push('/'); // push user to dashboard when they login
+      browserHistory.push('/profile'); // push user to profile when they login
     }
 
     if (nextProps.errors) {
